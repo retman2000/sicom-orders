@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrdersController;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,6 +13,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('orders',   'OrdersController');
+Route::get('/',             'OrdersController@index');
+Route::get('home',             'OrdersController@home');
+//Route::get('/{id}',     'OrdersController@show');
+
+//Route::get('/items/{item_id}', 'ItemsController@show');
+
+Route::post('add',          'ItemsController@add');
+//Route::post('remove',       'ItemsController@remove');
+//Route::get('delete',         'ItemsController@destroy');
+Route::post('save',        'OrdersController@store');
+Route::post('itemSave',        'ItemsController@store');
+
+
